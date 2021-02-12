@@ -162,12 +162,6 @@ export const cities = [
         population: 46765970,
         capitol: 'Madrid',
         language: 'Spainish',
-    },
-    {
-        country: 'United States',
-        population: 332812140,
-        capitol: 'Washington DC',
-        language: 'American English'
     }
 ]
 ```
@@ -249,7 +243,7 @@ Create a new component with the file name ```City.js``` in the `components` fold
 - Add in a JSX tag for each property
 - Render the data in your JSX using `props`
     
-<details><summary>Your <code>City.js</code> component should look similar to this component depending on how the props object is destructured.</summary>
+<details><summary>Your <code>City.js</code> component should look similar to this component depending on how the <code>props</code> object is destructured.</summary>
 
 ```jsx
 import React from 'react'
@@ -260,8 +254,8 @@ const City = (props) => {
     
     return(
        <div>
-            <p>Capitol: {capitol}</p>
             <p>Country: {country}</p>
+            <p>Capitol: {capitol}</p>
             <p>Population: {population}</p>
             <p>Language: {language}</p>
        </div>
@@ -289,11 +283,32 @@ Now that we've created our `City` component to accept data through props from ou
 import City from './City'
 ```
 - Depending on if our array data was imported into `App.js` or `Content.js` we'll have access to it in one of two ways:
-  - If it was imported in `Content.js` we'll have direct access 
-- Use the map Array method to map over the cities array. Return the ```Cities.js``` component inside of map Array method.
+  - If it was imported in `Content.js` we'll have direct access to te `cities` data array in our `<Content />` component.
+  - If it was imported in `App.js` we'll need to access it through `props`
+- Now, we'll need to use the `map()` Array method to map over the cities array and pass its data into our `<City />` component within the return of `Content.js`.
+- First, we'll need to create a block of code inside the JSX return of `Content.js` with curly brackets `{}` to allow JavaScript to be written inside of the JSX.
+```js
+import React from 'react';
+import City from './City';
+
+const Content = (props) => {
+  return (
+    <div>
+      {/* .map() method used on props.cities here */}
+    </div>
+  );
+}
+
+export default Content;
+```
+- Next, we'll map over the `cities` array and create a `<City />` component with the data from each element in the `cities` array.
+  - Call in the `cities` array with `props.cities` in your new JavaScript code block
+  - Make sure to give an argument for each `city` along with its `index` inside the `.map()`
+  - Return the `<City />` component inside of `.map()` Array method.
+  - Give the `<City />` component a prop for the `city` that takes in the `city` element and a `key` that takes in each city's `index`
 
 ```jsx
-{cities.map( (city, index) => 
+{props.cities.map((city, index) => 
     (<City city={city} key={index} />)
 )}
 ```
