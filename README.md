@@ -267,6 +267,26 @@ export default City
 
 - More on ES6 Destructuring Syntax [here](https://jackharner.com/blog/destructuring-and-nested-destructuring-in-es6/).
 
+<details><summary>A quick CSS class to add onto the <code>City</code> component if you'd like to make it more visible</summary>
+  
+  ```css
+  .city-card {
+    width: 14em;
+    background: linear-gradient(165deg,rgb(110, 132, 192), rgb(18, 36, 61) );
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 .25em black;
+    padding: .5em 1em;
+    margin: 1em auto;
+    border-radius: 0.25em;
+    font-size: 1.1em;
+    line-height: .25em;
+    font-weight: 600;
+    text-align: left;
+    text-shadow: 1px 0px 2px rgb(0, 0, 0);
+  }
+  ```
+</details>
+
 Like highways are the lifeblood of cities, allowing the transportation of goods, services, and people, `props` are the lifeblood of components in React, allowing data to flow into a component and render in the UI. 
 
 <img src="https://64.media.tumblr.com/fb2f1c83ae879a005b684c798046372c/tumblr_miqqz4Fqmu1rdl9yyo1_500.gif" alt="highway" height="300" />
