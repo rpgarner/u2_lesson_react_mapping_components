@@ -127,7 +127,9 @@ Now there are 3 components nested inside the ```Layout.js```. Each imported comp
 ___
 ### Adding Data to Our Application
 
-In a separate file name ```data.js``` we are adding an array of objects that includes some city data to add to our application. Import the ```data.js``` file into our application.
+<img src="https://blog.kissmetrics.com/wp-content/uploads/2017/04/uber-new-york-supply-demand.gif" alt="city data" height="300" />
+
+In a separate file named ```data.js``` we are adding an array of objects that includes some city data to add to our application. Import the ```data.js``` file into our application.
 
 We can do this a few ways:
 - Import into the ```App.js``` component and pass as props down through our application to the ```Content.js``` component
@@ -202,7 +204,6 @@ export default City
 ```
 
 </details>
-
 
 - More on ES6 Destructuring Syntax [here](https://jackharner.com/blog/destructuring-and-nested-destructuring-in-es6/).
 
