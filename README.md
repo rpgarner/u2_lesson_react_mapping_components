@@ -7,7 +7,7 @@
 In this lesson, we'll be building a simple website that displays city data from an array in JSX by using `.map()` to render the data with a nested functional component.
 
 
-## Learning Objectives
+## Lesson Objectives
 By the end of this, students should be able to:
 - Use Functional React components
 - Nest components
