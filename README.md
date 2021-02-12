@@ -5,7 +5,7 @@
 ## Overview
 We've already covered the hardcoding of components in React and passing hardcoded data into reuasable modular components through props. However, React isn't intended to be used simply for hardcoded data. Its whole purpose is to _react_ to new information and user input and _pass data to the components_ that need to know about the data change so they can update the UI accordingly.
 
-One thing you'll find yourself needing to do is take an array of data and turn it into a series of HTML elements. It's not very common to type out the array manually though. Instead, you'll usually have an array containing just your data and you'll use the `.map()` higher order function to create the new array with JSX in it.
+One thing you'll find yourself needing to do is take an array of data and turn it into a series of JSX elements. It's not very common to type out the array manually though. Instead, you'll usually have an array containing just your data and you'll use the `.map()` higher order function to create the new array with JSX in it.
 
 In this lesson, we'll be building a simple website that displays data from an array in JSX by using `.map()` in a functional component.
 
@@ -57,7 +57,7 @@ const Greet = (props) => <h1>Hello {props.name}</h1>
 export default Greet
 ```
 
-Functional components focus on the UI and don't have their own state. The value returned from the function only depends on the `values passed` as a parameter also known as `props`. The function will return the same result when passed the same props. Functional components also do not use setState, lifecycle methods, or *this*. Functional components are also "pure functions" meaning they do not have side effects. You might also notice that they are much easier to write, making them a great choice when building components that simply display data from `props`.
+Functional components focus on the UI and don't have their own state. The value returned from the function only depends on the `values passed` as a parameter also known as `props`. The function will return the same result when passed the same props. Functional components also do not use setState, lifecycle methods, or *this*. Functional components are also "pure functions" meaning they do not have side effects. 
 
 ___
 ### Nesting Components
@@ -72,7 +72,7 @@ The beauty of React is that it is _component based_. Let's create a new componen
 ```jsx
 import React from 'react'
 
-const Layout = () => {
+const Layout = (props) => {
     return(
         <div>
             // Place components here in Layout component
@@ -88,6 +88,7 @@ export default Layout
 // App.js
 import Layout from './components/Layout';
 ```
+- Replace the boilerplate generated in `App.js` with our `Layout` component after importing it.
 
 
 ### You Do: (10 minutes)
@@ -107,7 +108,7 @@ import Header from './Header'
 import Content from './Content'
 import Footer from './Footer'
 
-const Layout = () => {
+const Layout = (props) => {
     return(
         <div>
            <Header />
@@ -129,13 +130,10 @@ ___
 
 <img src="https://blog.kissmetrics.com/wp-content/uploads/2017/04/uber-new-york-supply-demand.gif" alt="city data" height="300" />
 
-In a separate file named ```data.js``` we are adding an array of objects that includes some city data to add to our application. Import the ```data.js``` file into our application.
+In a separate file named ```data.js``` we'll add an array of objects that includes some city data to add to our application. 
 
-We can do this a few ways:
-- Import into the ```App.js``` component and pass as props down through our application to the ```Content.js``` component
-- Import ```data.js``` directly into the ```Content.js``` component.
-
-The second way is easier but the first way listed allows us to pass props through our application. **Note: Make sure to export the data from the file**
+- In the `src` folder, create a file named `data.js`.
+- Add the following array into the `data.js` file.
 
 #### Data Array
     
@@ -143,30 +141,100 @@ The second way is easier but the first way listed allows us to pass props throug
 export const cities = [
     {
         country: 'China',
-        population: 1403500365,
+        population: 1442778120,
         capitol: 'Beijing',
         language: 'Chinese',
     },
     {
         country: 'Brazil',
-        population: 205823665, 
-        capitol: 'Brazilia',
+        population: 213503350,
+        capitol: 'Brasília',
         language: 'Portuguese',
     },
     {
         country: 'Egypt',
-        population: 90120000,
+        population: 103563160,
         capitol: 'Cairo',
         language: 'Arabic',
     },
     {
         country: 'Spain',
-        population: 46468102,
+        population: 46765970,
         capitol: 'Madrid',
         language: 'Spainish',
+    },
+    {
+        country: 'United States',
+        population: 332812140,
+        capitol: 'Washington DC',
+        language: 'American English'
     }
 ]
 ```
+
+- Import the ```data.js``` file into our application.
+
+We can do this a few ways:
+<details><summary>Import into the <code>App.js</code> component and pass as props down through our application to the <code>Content.js</code> component</summary>
+  
+  <br />
+  
+  - First, we import into `App.js` and pass the `cities` array as `props` into our `Layout` component.
+  
+  #### App.js
+  ```js
+  import React from 'react';
+  import './App.css';
+  import Layout from './components/Layout';
+  import cities from './data';
+  
+  function App() {
+    return(
+      <Layout cities={cities} />    // <Layout /> is the parent of our <Content /> component
+    )                               // We'll have to pass the cities array down through props into Layout.js
+  }                                 // first to give access to the array in Content.js
+  
+  export default App;
+  ```
+  
+  - Next, we'll need to pass the `cities` array as `props` again from our `Layout` component into our `Content` component give access the data in `Content.js`
+  
+  #### Layout.js
+  ```js
+  import React from 'react'
+  import Header from './Header'
+  import Content from './Content'
+  import Footer from './Footer'
+
+  const Layout = (props) => {
+    return(
+        <div>                                 // Since we have access to cities through props in Layout,
+           <Header />                         // we'll pass the data into <Content /> again as props
+           <Content cities={props.cities}/>                                           // <---- here.
+           <Footer />
+        </div>
+    )
+  }
+
+  export default Layout
+  ```
+  
+  
+  
+</details> 
+<details><summary>Import <code>data.js</code> directly into the <code>Content.js</code> component.</summary>
+  
+  #### Content.js
+  ```js
+  import cities from '../data'
+  
+  ```
+  
+</details>
+
+The second way is easier but the first way listed allows us to pass props through our application. **Note: Make sure to export the data from the file**
+
+
 
 ___
 ### Prepare a New Component to Display Data
@@ -207,13 +275,21 @@ export default City
 
 - More on ES6 Destructuring Syntax [here](https://jackharner.com/blog/destructuring-and-nested-destructuring-in-es6/).
 
+Like highways are the lifeblood of cities, allowing the transportation of goods, services, and people, `props` are the lifeblood of components in React, allowing data to flow into a component and render in the UI. 
 
+<img src="https://64.media.tumblr.com/fb2f1c83ae879a005b684c798046372c/tumblr_miqqz4Fqmu1rdl9yyo1_500.gif" alt="highway" height="300" />
+
+___
 ### Mapping Array Data with our Component
-Now in your ```Content.js``` component, import the ```City.js``` component.  
+Now that we've created our `City` component to accept data through props from our data array, we'll use the `map()` higher order function to render multiple copies of it with all of the data in our array inside of our `Content` component.
+
+- In ```Content.js```, import the ```City.js``` component.  
 ```js
 // Content.js
 import City from './City'
 ```
+- Depending on if our array data was imported into `App.js` or `Content.js` we'll have access to it in one of two ways:
+  - If it was imported in `Content.js` we'll have direct access 
 - Use the map Array method to map over the cities array. Return the ```Cities.js``` component inside of map Array method.
 
 ```jsx
