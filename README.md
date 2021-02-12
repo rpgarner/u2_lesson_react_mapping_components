@@ -3,14 +3,29 @@
 ![](https://media.giphy.com/media/d2jjuAZzDSVLZ5kI/giphy.gif)
 
 ## Overview
+We've already covered the hardcoding of components in React and passing hardcoded data into reuasable modular components through props. However, React isn't intended to be used simply for hardcoded data. Its whole purpose is to react to new information and user input and pass data to the components that need to know about the data change so they can update the UI accordingly.
 
+React makes taking regular JavaScript data and turning it into an HTML element simple with JSX. One thing you'll find yourself needing to do is take an array of data and turning it into a series of HTML elements. It's not very common to type out the array manually though. Instead, you'll usually have an array containing just your data and you'll use `.map()` higher order function to create the new array with JSX in it.
+
+In this lesson, we'll be building a simple website that displays data from an array in JSX by using `.map()` in a functional component.
 
 
 ## Learning Objectives
 By the end of this, students should be able to:
 - Use Functional React components
 - Nest components
+- Destructure props to be used in a component
 - Create a list component
+- Use `.map()` to render multiple components from an array of data
+
+## Getting Started
+
+To start this build out, begin by creating a new React project: 
+
+- ```$ npx create-react-app mapping-components```
+- Next ```cd mapping-components```
+- Open your project up in VS Code
+- ```npm run start``` to start your development server
 
 ## Framing
 In React there are two ways to define components, Functional and Class components. Functional components are normal JavaScript functions which accept props and returns a React element. 
@@ -20,15 +35,8 @@ const Greet = props => <h1>Hello {props.name}</h1>
 ```
 Functional components focus on the UI and don't have their own state. The value returned from the function only depends on the values passed as a parameter also known as props. The function will return the same result when passed the same props. Functional components also do not use setState, lifecylce methods, or *this*. Functional components are also "pure functions" meaning they do not have side effects. 
 
-## Get Started
 
-To start this build out, begin by creating a new React project: 
 
-1. ```$ npx create-react-app functional-components```
-1. Next ```cd functional-components```
-1. Open text text editor
-1. ```npm run start```
-1. Happy coding!
 
 ## Nesting Components
 
@@ -174,5 +182,5 @@ In your ```Content.js``` component, import the ```City.js``` component.  Use the
 You have now nested functional components, passed props down through your application, and mapped over data to display UI.
 
 ## Resources
-
+- [Mapping Components Reading](https://coursework.vschool.io/mapping-components-in-react/)
 
