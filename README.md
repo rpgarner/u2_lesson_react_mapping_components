@@ -27,7 +27,8 @@ To start this build out, begin by creating a new React project:
 - Open your project up in VS Code
 - ```npm run start``` to start your development server
 
-## Framing
+## Instructions
+### Framing
 In React there are two ways to define components, Functional and Class components. Functional components are normal JavaScript functions which accept props and returns a React element. 
 
 ```javascript
@@ -38,7 +39,7 @@ Functional components focus on the UI and don't have their own state. The value 
 
 
 
-## Nesting Components
+### Nesting Components
 
 Nested Components are components that are inside of other components. They follow the common engineering pattern of parent, child, and sibling. We take advantage of this to create dynamic and complex UI or user interface. UI includes elements such as buttons, dropdowns menus, and many other elements. 
 
@@ -58,7 +59,7 @@ const Layout = () => {
 
 export default Layout
 ```
-## You Do: (10 minutes)
+### You Do: (10 minutes)
 
 *In basic layout tradition we will have a header, main content, and a footer. Let's create three more files ```Header.js```, ```Footer.js```, and ```Content.js```. Since we are only displaying UI, all components should be functional components
 
@@ -89,7 +90,7 @@ export default Layout
 
 Now there are 3 components nested inside the ```Layout.js```. Each imported component is a child of ```Layout.js```.
 
-## Adding Data to Our Application
+### Adding Data to Our Application
 
 In a separate file name ```data.js``` we are adding an array of objects that includes some city data to add to our application. Import the ```data.js``` file into our application.
 
@@ -133,13 +134,13 @@ const cities = [
 
 </details>
 
-## Prepare a New Component to Display Data
+### Prepare a New Component to Display Data
 
 Look at the object given:
 1. What properties are we going to render?
 2. What is the appriate JSX? Be semantic.
 
-## You Do: Create a new component with the file name ```City.js``` to render our data
+### You Do: Create a new component with the file name ```City.js``` to render our data
 
 <details>
     <summary>City Component:</summary>
