@@ -15,8 +15,8 @@ By the end of this, students should be able to:
 - Use Functional React components
 - Nest components
 - Destructure props to be used in a component
-- Create a list component
-- Use `.map()` to render multiple components from an array of data
+- Create a list component utilizing `.map()`
+
 
 ## Getting Started
 
@@ -25,25 +25,45 @@ To start this build out, begin by creating a new React project:
 - ```$ npx create-react-app mapping-components```
 - Next ```cd mapping-components```
 - Open your project up in VS Code
+- Create a `components` folder inside `src` to organize the components we'll be building
 - ```npm run start``` to start your development server
+
 
 ## Instructions
 ### Framing
-In React there are two ways to define components, Functional and Class components. Functional components are normal JavaScript functions which accept props and returns a React element. 
+In React there are two ways to define components, `Functional` and `Class` components. While more verbose than the functional syntax, Class components offer more control with access to state and lifecyclee methods, which we'll be covering later this week. Creating a class component is pretty simple; just define a class that `extends Component` and has a `render` function:
+```jsx
+import React, { Component } from 'react';
+
+class Greet extends Component {
+  render() {
+    return (
+      <h1>Hello {this.props.name}</h1>
+    );
+  }
+}
+
+export default Greet;
+```
+
+While writing out Class components is necessary for components that need more control, what if we just wanted to write a component that displays the data from its props? 
+
+Functional components are normal JavaScript functions which accept props and return a React element. 
 
 ```javascript
 const Greet = props => <h1>Hello {props.name}</h1>
+export default Greet;
 ```
-Functional components focus on the UI and don't have their own state. The value returned from the function only depends on the values passed as a parameter also known as props. The function will return the same result when passed the same props. Functional components also do not use setState, lifecylce methods, or *this*. Functional components are also "pure functions" meaning they do not have side effects. 
+Functional components focus on the UI and don't have their own state. The value returned from the function only depends on the `values passed` as a parameter also known as `props`. The function will return the same result when passed the same props. Functional components also do not use setState, lifecycle methods, or *this*. Functional components are also "pure functions" meaning they do not have side effects. You might also notice that they are much easier to write, making them a great choice when building components that simply display data from `props`.
 
 
 
 
 ### Nesting Components
 
-Nested Components are components that are inside of other components. They follow the common engineering pattern of parent, child, and sibling. We take advantage of this to create dynamic and complex UI or user interface. UI includes elements such as buttons, dropdowns menus, and many other elements. 
+Nested Components are components that are inside of other components. They follow the common engineering pattern of parent, child, and sibling. We take advantage of this to create dynamic and complex UI or user interface. UI includes elements such as buttons, cards, dropdowns menus, and many other elements. 
 
-The beauty of React is that it is component based. Let's create a new component to hold our other components we need to build. Let's start by creating a file named ```Layout.js``` to nest our other components. This is a functional component because it will be a container for other components.
+The beauty of React is that it is _component based_. Let's create a new component to hold our other components we need to build. Let's start by creating a file named ```Layout.js``` to nest our other components. This is a functional component because it will be a container for other components.
 
 ### Layout Component
 ```jsx
