@@ -3,9 +3,9 @@
 ![](https://media.giphy.com/media/d2jjuAZzDSVLZ5kI/giphy.gif)
 
 ## Overview
-We've already covered the hardcoding of components in React and passing hardcoded data into reuasable modular components through props. However, React isn't intended to be used simply for hardcoded data. Its whole purpose is to react to new information and user input and pass data to the components that need to know about the data change so they can update the UI accordingly.
+We've already covered the hardcoding of components in React and passing hardcoded data into reuasable modular components through props. However, React isn't intended to be used simply for hardcoded data. Its whole purpose is to _react_ to new information and user input and _pass data to the components_ that need to know about the data change so they can update the UI accordingly.
 
-React makes taking regular JavaScript data and turning it into an HTML element simple with JSX. One thing you'll find yourself needing to do is take an array of data and turning it into a series of HTML elements. It's not very common to type out the array manually though. Instead, you'll usually have an array containing just your data and you'll use `.map()` higher order function to create the new array with JSX in it.
+One thing you'll find yourself needing to do is take an array of data and turn it into a series of HTML elements. It's not very common to type out the array manually though. Instead, you'll usually have an array containing just your data and you'll use the `.map()` higher order function to create the new array with JSX in it.
 
 In this lesson, we'll be building a simple website that displays data from an array in JSX by using `.map()` in a functional component.
 
@@ -60,7 +60,7 @@ export default Greet
 
 Functional components focus on the UI and don't have their own state. The value returned from the function only depends on the `values passed` as a parameter also known as `props`. The function will return the same result when passed the same props. Functional components also do not use setState, lifecycle methods, or *this*. Functional components are also "pure functions" meaning they do not have side effects. You might also notice that they are much easier to write, making them a great choice when building components that simply display data from `props`.
 
-
+___
 ### Nesting Components
 
 Nested Components are components that are inside of other components. They follow the common engineering pattern of parent, child, and sibling. We take advantage of this to create dynamic and complex UI or user interface. UI includes elements such as buttons, cards, dropdowns menus, and many other elements. 
@@ -83,6 +83,14 @@ const Layout = () => {
 
 export default Layout
 ```
+
+- Now we'll need to import our `Layout` component into `App.js`
+```js
+// App.js
+import Layout from './components/Layout';
+```
+
+
 ### You Do: (10 minutes)
 
 In basic layout tradition we will have a `<Header />`, main `<Content />`, and a `<Footer />`. 
@@ -113,23 +121,23 @@ const Layout = () => {
 export default Layout
 ```
 
-Now there are 3 components nested inside the ```Layout.js```. Each imported component is a child of ```Layout.js```.
+Now there are 3 components nested inside the ```Layout.js```. Each imported component is a _child_ of ```Layout.js```.
 
+___
 ### Adding Data to Our Application
 
 In a separate file name ```data.js``` we are adding an array of objects that includes some city data to add to our application. Import the ```data.js``` file into our application.
 
 We can do this a few ways:
-1. Import into ```App.js``` component and pass as props down through our application to the ```Content.js``` component
-2. Import ```data.js``` directly into the ```Content.js``` component.
+- Import into the ```App.js``` component and pass as props down through our application to the ```Content.js``` component
+- Import ```data.js``` directly into the ```Content.js``` component.
 
-The second way is easier but the first way listed allows us to passing props through our application. **Note: Make sure to export the data from the file**
+The second way is easier but the first way listed allows us to pass props through our application. **Note: Make sure to export the data from the file**
 
-<details>
-    <summary>Data Array:</summary>
+#### Data Array
     
-```
-const cities = [
+```js
+export const cities = [
     {
         country: 'China',
         population: 1403500365,
@@ -157,18 +165,17 @@ const cities = [
 ]
 ```
 
-</details>
-
+___
 ### Prepare a New Component to Display Data
 
 Look at the object given:
 1. What properties are we going to render?
 2. What is the appriate JSX? Be semantic.
 
-### You Do: Create a new component with the file name ```City.js``` to render our data
+### You Do 
 
-<details>
-    <summary>City Component:</summary>
+Create a new component with the file name ```City.js``` in the `components` folder to render our data
+
     
 ```jsx
 import React from 'react'
@@ -189,8 +196,6 @@ const City = (props) => {
 
 export default City
 ```
-
-</details>
 
 
 
