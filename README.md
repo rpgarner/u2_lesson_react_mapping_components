@@ -49,7 +49,7 @@ class Greet extends Component {
 
 export default Greet
 ```
-</detail>
+</details>
 
 Functional components focus on the UI and don't have their own state. The value returned from the function only depends on the `values passed` as a parameter also known as `props`. The function will return the same result when passed the same props. Functional components also do not use setState, lifecycle methods, or *this*. Functional components are also "pure functions" meaning they do not have side effects. 
 
