@@ -1,13 +1,10 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)  SOFTWARE ENGINEERING IMMERSIVE
+# Mapping Components
 
 ![](https://media.giphy.com/media/d2jjuAZzDSVLZ5kI/giphy.gif)
 
-## Prerequisites
-- Introduction to React
-- Create-react-app installed
-- Basic understanding of components
-- Basic understanding of passing props 
-- Visual Studio Code installed
+## Overview
+
+
 
 ## Learning Objectives
 By the end of this, students should be able to:
@@ -172,7 +169,10 @@ In your ```Content.js``` component, import the ```City.js``` component.  Use the
     (<City city={city} key={index} />)
 )}
 ```
-## Conclusion
+## Recap
 
-You have now nested fucntional components, passed props down through your application, and mapped over data to display UI.
+You have now nested functional components, passed props down through your application, and mapped over data to display UI.
+
+## Resources
+
 
