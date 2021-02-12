@@ -34,7 +34,7 @@ In React there are two ways to define components, `Functional` and `Class` compo
 
 While more verbose than the functional syntax, Class components offer more control with access to state and lifecyclee methods, which we'll be covering later this week. Creating a Class component is pretty simple, just define a class that `extends Component` and has a `render` function.
 
-```jsx
+```js
 import React, { Component } from 'react';
 
 class Greet extends Component {
