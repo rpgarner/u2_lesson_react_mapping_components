@@ -14,7 +14,6 @@ In this lesson, we'll be building a simple website that displays data from an ar
 By the end of this, students should be able to:
 - Use Functional React components
 - Nest components
-- Destructure props to be used in a component
 - Create a list component utilizing `.map()`
 
 
@@ -54,7 +53,7 @@ While writing out Class components is necessary for components that need more co
 Functional components are normal JavaScript functions which accept `props` and return a React element. 
 
 ```javascript
-const Greet = props => <h1>Hello {props.name}</h1>
+const Greet = (props) => <h1>Hello {props.name}</h1>
 export default Greet
 ```
 
@@ -168,15 +167,18 @@ export const cities = [
 ___
 ### Prepare a New Component to Display Data
 
-Look at the object given:
-1. What properties are we going to render?
-2. What is the appriate JSX? Be semantic.
+Look at the objects given in our Data Array:
+- What properties are we going to render?
+- What is the appriate JSX for each property? Be semantic.
 
 ### You Do 
 
 Create a new component with the file name ```City.js``` in the `components` folder to render our data
-
+- Add in a JSX tag for each property
+- Render the data in your JSX using `props`
     
+<details><summary><strong>Your City.js component should look similar to this component depending on how the props object is destructured.</strong></summary>
+
 ```jsx
 import React from 'react'
 
@@ -197,11 +199,19 @@ const City = (props) => {
 export default City
 ```
 
+</details>
 
 
-**Your ```City.js``` component should look similar to depending on how the props object is destructured.**
+- More on ES6 Destructuring Syntax [here](https://jackharner.com/blog/destructuring-and-nested-destructuring-in-es6/).
 
-In your ```Content.js``` component, import the ```City.js``` component.  Use the map Array method to map over the cities array. Return the ```Cities.js``` component inside of map Array method.
+
+### Mapping Array Data with our Component
+Now in your ```Content.js``` component, import the ```City.js``` component.  
+```js
+// Content.js
+import City from './City'
+```
+- Use the map Array method to map over the cities array. Return the ```Cities.js``` component inside of map Array method.
 
 ```jsx
 {cities.map( (city, index) => 
