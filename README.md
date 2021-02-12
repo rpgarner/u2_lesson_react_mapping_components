@@ -138,7 +138,7 @@ In a separate file named ```data.js``` we'll add an array of objects that includ
 #### Data Array
     
 ```js
-export const cities = [
+const cities = [
     {
         country: 'China',
         population: 1442778120,
@@ -164,6 +164,8 @@ export const cities = [
         language: 'Spainish',
     }
 ]
+
+export default cities;
 ```
 
 - Import the ```data.js``` file into our application.
@@ -282,11 +284,15 @@ Now that we've created our `City` component to accept data through props from ou
 // Content.js
 import City from './City'
 ```
-- Depending on if our array data was imported into `App.js` or `Content.js` we'll have access to it in one of two ways:
-  - If it was imported in `Content.js` we'll have direct access to te `cities` data array in our `<Content />` component.
-  - If it was imported in `App.js` we'll need to access it through `props`
-- Now, we'll need to use the `map()` Array method to map over the cities array and pass its data into our `<City />` component within the return of `Content.js`.
+
+Depending on if our array data was imported into `App.js` or `Content.js` we'll have access to it in one of two ways:
+
+- If it was imported in `Content.js` we'll have direct access to te `cities` data array in our `<Content />` component.
+- If it was imported in `App.js` we'll need to access it through `props`
+
+Now, we'll need to use the `map()` Array method to map over the cities array and pass its data into our `<City />` component within the return of `Content.js`.
 - First, we'll need to create a block of code inside the JSX return of `Content.js` with curly brackets `{}` to allow JavaScript to be written inside of the JSX.
+
 ```js
 import React from 'react';
 import City from './City';
@@ -301,7 +307,8 @@ const Content = (props) => {
 
 export default Content;
 ```
-- Next, we'll map over the `cities` array and create a `<City />` component with the data from each element in the `cities` array.
+
+Next, we'll map over the `cities` array and create a `<City />` component with the data from each element in the `cities` array.
   - Call in the `cities` array with `props.cities` in your new JavaScript code block
   - Make sure to give an argument for each `city` along with its `index` inside the `.map()`
   - Return the `<City />` component inside of `.map()` Array method.
@@ -312,6 +319,12 @@ export default Content;
     (<City city={city} key={index} />)
 )}
 ```
+
+Make sure to always give components created by an array `.map()` a `key`.
+- Keys help React identify which items have changed, are added, or are removed. 
+- Keys should be given to the elements inside the array to give the elements a stable identity.
+- More on `keys` [here](https://reactjs.org/docs/lists-and-keys.html#keys).
+
 ## Recap
 
 You have now nested functional components, passed props down through your application, and mapped over data to display UI.
