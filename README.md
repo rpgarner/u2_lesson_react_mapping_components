@@ -272,7 +272,7 @@ export default City
   ```css
   .city-card {
     width: 14em;
-    background: linear-gradient(165deg,rgb(110, 132, 192), rgb(18, 36, 61) );
+    background: linear-gradient(165deg,rgb(110, 132, 192), rgb(18, 36, 61));
     color: rgb(255, 255, 255);
     box-shadow: 0 0 .25em black;
     padding: .5em 1em;
@@ -350,5 +350,8 @@ You have now nested functional components, passed props down through your applic
 
 
 ## Resources
-- [Mapping Components Reading](https://coursework.vschool.io/mapping-components-in-react/)
+- [Embedding .map() in JSX (React Docs)](https://reactjs.org/docs/lists-and-keys.html#embedding-map-in-jsx)
+- [Keys (React Docs)](https://reactjs.org/docs/lists-and-keys.html#keys)
+- [Components and Props (React Docs)](https://reactjs.org/docs/components-and-props.html)
+- [Additional Mapping Components Reading](https://coursework.vschool.io/mapping-components-in-react/)
 
