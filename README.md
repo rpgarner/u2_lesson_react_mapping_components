@@ -99,7 +99,7 @@ In basic layout tradition we will have a `<Header />`, main `<Content />`, and a
 - Now add some JSX to each of our components.
 - Import each component into our ```Layout.js``` component.
 
-Your Layout component should look similar to the updated ```Layout.js``` component.
+<details><summary>Your Layout component should look similar to this updated <code>Layout.js</code> component when finished.</summary>
 
 ```jsx
 import React from 'react'
@@ -119,6 +119,8 @@ const Layout = () => {
 
 export default Layout
 ```
+
+</details>
 
 Now there are 3 components nested inside the ```Layout.js```. Each imported component is a _child_ of ```Layout.js```.
 
@@ -177,7 +179,7 @@ Create a new component with the file name ```City.js``` in the `components` fold
 - Add in a JSX tag for each property
 - Render the data in your JSX using `props`
     
-<details><summary><strong>Your City.js component should look similar to this component depending on how the props object is destructured.</strong></summary>
+<details><summary>Your <code>City.js</code> component should look similar to this component depending on how the props object is destructured.</summary>
 
 ```jsx
 import React from 'react'
