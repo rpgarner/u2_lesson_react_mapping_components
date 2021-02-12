@@ -46,21 +46,19 @@ class Greet extends Component {
   }
 }
 
-export default Greet;
+export default Greet
 ```
 
 While writing out Class components is necessary for components that need more control, what if we just wanted to write a component that displays the data from its props? 
 
-Functional components are normal JavaScript functions which accept props and return a React element. 
+Functional components are normal JavaScript functions which accept `props` and return a React element. 
 
 ```javascript
 const Greet = props => <h1>Hello {props.name}</h1>
-export default Greet;
+export default Greet
 ```
 
 Functional components focus on the UI and don't have their own state. The value returned from the function only depends on the `values passed` as a parameter also known as `props`. The function will return the same result when passed the same props. Functional components also do not use setState, lifecycle methods, or *this*. Functional components are also "pure functions" meaning they do not have side effects. You might also notice that they are much easier to write, making them a great choice when building components that simply display data from `props`.
-
-
 
 
 ### Nesting Components
@@ -87,11 +85,12 @@ export default Layout
 ```
 ### You Do: (10 minutes)
 
-*In basic layout tradition we will have a header, main content, and a footer. Let's create three more files ```Header.js```, ```Footer.js```, and ```Content.js```. Since we are only displaying UI, all components should be functional components
+In basic layout tradition we will have a `<Header />`, main `<Content />`, and a `<Footer />`. 
 
-*Now add some JSX to each of our components.
-
-*Import each component into our ```Layout.js``` component.
+- Let's create three more files ```Header.js```, ```Footer.js```, and ```Content.js``` in our `components` folder.
+- Since we are only displaying UI, all components should be Functional components
+- Now add some JSX to each of our components.
+- Import each component into our ```Layout.js``` component.
 
 Your Layout component should look similar to the updated ```Layout.js``` component.
 
