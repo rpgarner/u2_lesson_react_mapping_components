@@ -3,11 +3,8 @@
 ![](https://media.giphy.com/media/d2jjuAZzDSVLZ5kI/giphy.gif)
 
 ## Overview
-We've already covered the hardcoding of components in React and passing hardcoded data into reuasable modular components through props. However, React isn't intended to be used simply for hardcoded data. Its whole purpose is to _react_ to new information and user input and _pass data to the components_ that need to know about the data change so they can update the UI accordingly.
 
-One thing you'll find yourself needing to do is take an array of data and turn it into a series of JSX elements. It's not very common to type out the array manually though. Instead, you'll usually have an array containing just your data and you'll use the `.map()` higher order function to create the new array with JSX in it.
-
-In this lesson, we'll be building a simple website that displays data from an array in JSX by using `.map()` in a functional component.
+In this lesson, we'll be building a simple website that displays city data from an array in JSX by using `.map()` to render the data with a nested functional component.
 
 
 ## Learning Objectives
@@ -30,11 +27,16 @@ To start this build out, begin by creating a new React project:
 
 ## Instructions
 ### Framing
-In React there are two ways to define components, `Functional` and `Class` components.
+In React there are two ways to define components, `Functional` and `Class` components. Functional components are normal JavaScript functions which accept `props` and return a React element. 
 
-While more verbose than the functional syntax, Class components offer more control with access to state and lifecyclee methods, which we'll be covering later this week. Creating a Class component is pretty simple, just define a class that `extends Component` and has a `render` function.
+```javascript
+const Greet = (props) => <h1>Hello {props.name}</h1>
+export default Greet
+```
 
-```js
+<details><summary>Class component alternative here</summary>
+  
+  ```js
 import React, { Component } from 'react';
 
 class Greet extends Component {
@@ -47,15 +49,7 @@ class Greet extends Component {
 
 export default Greet
 ```
-
-While writing out Class components is necessary for components that need more control, what if we just wanted to write a component that displays the data from its props? 
-
-Functional components are normal JavaScript functions which accept `props` and return a React element. 
-
-```javascript
-const Greet = (props) => <h1>Hello {props.name}</h1>
-export default Greet
-```
+</detail>
 
 Functional components focus on the UI and don't have their own state. The value returned from the function only depends on the `values passed` as a parameter also known as `props`. The function will return the same result when passed the same props. Functional components also do not use setState, lifecycle methods, or *this*. Functional components are also "pure functions" meaning they do not have side effects. 
 
@@ -228,7 +222,9 @@ We can do this a few ways:
   
 </details>
 
-The second way is easier but the first way listed allows us to pass props through our application. **Note: Make sure to export the data from the file**
+The second way is easier but the first way listed allows us to pass props through our application. 
+
+**Note: Make sure to export the data from the file**
 
 
 
@@ -327,7 +323,11 @@ Make sure to always give components created by an array `.map()` a `key`.
 
 ## Recap
 
-You have now nested functional components, passed props down through your application, and mapped over data to display UI.
+You have now nested functional components, passed props down through your application, and mapped over data to display UI. Core concepts in React we covered in this lesson include:
+- Passing data into Functional components through `props`
+- Using Functional components to display array data by `.mapping()` through the data and passing it into a child component through `props`
+- Using `keys` when mapping through a data array to help React identify components
+
 
 ## Resources
 - [Mapping Components Reading](https://coursework.vschool.io/mapping-components-in-react/)
