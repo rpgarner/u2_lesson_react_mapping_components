@@ -37,18 +37,18 @@ export default Greet
 <details><summary>Class component alternative here</summary>
   
   ```js
-import React, { Component } from 'react';
+  import React, { Component } from 'react';
 
-class Greet extends Component {
-  render() {
-    return (
-      <h1>Hello {this.props.name}</h1>
-    );
+  class Greet extends Component {
+    render() {
+      return (
+        <h1>Hello {this.props.name}</h1>
+      );
+    }
   }
-}
 
-export default Greet
-```
+  export default Greet
+  ```
 </details>
 
 Functional components focus on the UI and don't have their own state. The value returned from the function only depends on the `values passed` as a parameter also known as `props`. The function will return the same result when passed the same props. Functional components also do not use setState, lifecycle methods, or *this*. Functional components are also "pure functions" meaning they do not have side effects. 
@@ -316,7 +316,7 @@ import City from './City';
 const Content = (props) => {
   return (
     <div>
-      {/* .map() method used on props.cities here */}
+    {/* .map() method used on props.cities here */}
     </div>
   );
 }
@@ -331,9 +331,15 @@ Next, we'll map over the `cities` array and create a `<City />` component with t
   - Give the `<City />` component a prop for the `city` that takes in the `city` element and a `key` that takes in each city's `index`
 
 ```jsx
-{props.cities.map((city, index) => 
-    (<City city={city} key={index} />)
-)}
+  const Content = (props) => {
+    return (
+      <div>
+      {props.cities.map((city, index) => 
+          (<City city={city} key={index} />)
+      )}
+      </div>
+    );
+  }
 ```
 
 Make sure to always give components created by an array `.map()` a `key`.
