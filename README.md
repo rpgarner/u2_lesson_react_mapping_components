@@ -9,7 +9,6 @@ In this lesson, we'll be building a simple website that displays city data from 
 
 ## Lesson Objectives
 By the end of this, students should be able to:
-- Use Functional React components
 - Nest components
 - Create a list component utilizing `.map()`
 
@@ -27,19 +26,13 @@ To start this build out, begin by creating a new React project:
 
 ## Instructions
 ### Framing
-In React there are two ways to define components, `Functional` and `Class` components. Functional components are normal JavaScript functions which accept `props` and return a React element. 
-
-```javascript
-const Greet = (props) => <h1>Hello {props.name}</h1>
-export default Greet
-```
-
-<details><summary>Class component alternative here</summary>
+To start off our project, we'll replace App.js with a `Class` component. Your file should look like this when you're finished.
   
   ```js
   import React, { Component } from 'react';
+  import './App.css'
 
-  class Greet extends Component {
+  class App extends Component {
     render() {
       return (
         <h1>Hello {this.props.name}</h1>
@@ -47,72 +40,45 @@ export default Greet
     }
   }
 
-  export default Greet
+  export default App;
   ```
-</details>
 
-Functional components focus on the UI and don't have their own state. The value returned from the function only depends on the `values passed` as a parameter also known as `props`. The function will return the same result when passed the same props. Functional components also do not use setState, lifecycle methods, or *this*. Functional components are also "pure functions" meaning they do not have side effects. 
+ 
 
 ___
 ### Nesting Components
 
 Nested Components are components that are inside of other components. They follow the common engineering pattern of parent, child, and sibling. We take advantage of this to create dynamic and complex UI or user interface. UI includes elements such as buttons, cards, dropdowns menus, and many other elements. 
 
-The beauty of React is that it is _component based_. Let's create a new component to hold our other components we need to build. 
-- Let's start by creating a file in the `component` folder named ```Layout.js``` to nest our other components. 
-- This is a Functional component because it will only be used as a _container_ for other components.
-
-#### Layout Component
-```jsx
-import React from 'react'
-
-const Layout = (props) => {
-    return(
-        <div>
-            // Place components here in Layout component
-        </div>
-    )
-}
-
-export default Layout
-```
-
-- Now we'll need to import our `Layout` component into `App.js`
-```js
-// App.js
-import Layout from './components/Layout';
-```
-- Replace the boilerplate generated in `App.js` with our `Layout` component after importing it.
-
-
-### You Do: (10 minutes)
-
 In basic layout tradition we will have a `<Header />`, main `<Content />`, and a `<Footer />`. 
 
 - Let's create three more files ```Header.js```, ```Footer.js```, and ```Content.js``` in our `components` folder.
-- Since we are only displaying UI, all components should be Functional components
 - Now add some JSX to each of our components.
-- Import each component into our ```Layout.js``` component.
+- Import each component into our ```App.js``` component.
 
-<details><summary>Your Layout component should look similar to this updated <code>Layout.js</code> component when finished.</summary>
+<details><summary>Your <code>App</code> component should look similar to this updated <code>App.js</code> component when finished.</summary>
 
-```jsx
-import React from 'react'
-import Header from './Header'
-import Content from './Content'
-import Footer from './Footer'
 
-const Layout = (props) => {
-    return(
+```js
+  import React, { Component } from 'react';
+  import './App.css'
+  import Header from './Header'
+  import Content from './Content'
+  import Footer from './Footer'
+  
+  class App extends Component {
+    render() {
+      return (
         <div>
            <Header />
            <Content />
            <Footer />
         </div>
-    )
-}
+      );
+    }
+  }
 
-export default Layout
+  export default App;
 ```
 
 </details>
