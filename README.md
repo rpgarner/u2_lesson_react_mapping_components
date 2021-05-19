@@ -83,7 +83,7 @@ In basic layout tradition we will have a `<Header />`, main `<Content />`, and a
 
 </details>
 
-Now there are 3 components nested inside the ```Layout.js```. Each imported component is a _child_ of ```Layout.js```.
+Now there are 3 components nested inside the ```App.js```. Each imported component is a _child_ of ```App.js```.
 
 ___
 ### Adding Data to Our Application
