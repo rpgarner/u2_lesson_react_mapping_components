@@ -1,0 +1,39 @@
+.flex-row {
+  display: flex;
+  min-height: 100vh;
+}
+
+.left,
+.right {
+  text-align: center;
+  flex: 1;
+}
+
+h1 {
+  text-decoration: underline;
+}
+
+.left {
+  border-right: 1px solid #333;
+}
+
+.right {
+  border-left: 1px solid #333;
+}
+
+ul {
+  list-style: none;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+.city-item {
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  width: 80%;
+  margin: 0.5em auto;
+  border-radius: 6px;
+}
