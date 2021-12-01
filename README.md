@@ -148,7 +148,7 @@ const cities = [
     country: 'Spain',
     population: 46765970,
     capitol: 'Madrid',
-    language: 'Spainish'
+    language: 'Spanish'
   }
 ]
 
