@@ -268,7 +268,7 @@ We'll add the following jsx below the commented out code:
 ```jsx
 {
   countries.map((country) => (
-    <CountryItem capitol={country.capitol} country={country.name} />
+    <CountryItem capitol={country.capitol} name={country.name} />
   ))
 }
 ```
@@ -281,7 +281,7 @@ We'll add the following jsx below the commented out code:
     <CountryItem
       key={country.capitol}
       capitol={country.capitol}
-      country={country.name}
+      name={country.name}
     />
   ))
 }
