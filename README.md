@@ -18,10 +18,10 @@ By the end of this, students should be able to:
 To start this build out, begin by creating a new React project:
 
 - Fork and Clone
-- `npm install`
-- Create a components folder in the `src` directory.
+- `cd` into the directory and run `npm install`
+- Create a `components` folder in the `src` directory.
 - Open your project up in VS Code
-- `npm run start` to start your development server
+- Run `npm run start` to start your development server
 
 ## Creating Parent Components
 
@@ -49,7 +49,7 @@ In `RightSidebar` accept props as an argument and add the following jsx:
 ```jsx
 return (
   <div className="right">
-    <h1>Cities</h1>
+    <h1>Countries</h1>
     {props.children}
   </div>
 )
@@ -83,7 +83,8 @@ import RightSidebar from './components/RightSidebar'
 Next we'll display both of our sidebars:
 
 ```js
-function App() {
+const App = () => {
+
   return (
     <div className="flex-row">
       <LeftSidebar />
@@ -122,58 +123,58 @@ This is for a couple of reasons:
 
 Now that we've added our sidebar components, we'll display some information.
 
-In the `src` folder, create a `cities.js` file and add the following content:
+In the `src` folder, create a `countries.js` file and add the following content:
 
 ```js
-const cities = [
+const countries = [
   {
-    country: 'China',
-    population: 1442778120,
-    capitol: 'Beijing',
-    language: 'Chinese'
+    name: 'Scotland',
+    population: 5463300,
+    capitol: 'Edinburgh',
+    language: 'English'
   },
   {
-    country: 'Brazil',
-    population: 213503350,
+    name: 'Brazil',
+    population: 212688125,
     capitol: 'Brasília',
     language: 'Portuguese'
   },
   {
-    country: 'Egypt',
-    population: 103563160,
+    name: 'Egypt',
+    population: 102674145,
     capitol: 'Cairo',
     language: 'Arabic'
   },
   {
-    country: 'Spain',
-    population: 46765970,
+    name: 'Spain',
+    population: 47450795,
     capitol: 'Madrid',
     language: 'Spanish'
   }
 ]
 
-export default cities
+export default countries
 ```
 
 Next we'll import this file into `App.js`:
 
 ```js
-import cities from './cities'
+import countries from './countries'
 ```
 
 ## Mapping Data
 
-Now that we've loaded our data in to `App.js`, we'll use it to return a a list of cities and their capitols.
+Now that we've loaded our data in to `App.js`, we'll use it to return a a list of countries and their capitols.
 
 Inside of the tags for the `RightSidebar`, let's add in the following:
 
 ```jsx
 <RightSidebar>
   <ul>
-    {cities.map((city) => (
+    {countries.map((country) => (
       <li>
-        <h3>Country: {city.country}</h3>
-        <h5>Capitol: {city.capitol}</h5>
+        <h3>Country: {country.name}</h3>
+        <h5>Capitol: {country.capitol}</h5>
       </li>
     ))}
   </ul>
@@ -182,11 +183,11 @@ Inside of the tags for the `RightSidebar`, let's add in the following:
 
 Break Down:
 
-- We're going to display a list of cities inside of a `ul`
-- We use the `{}` notation to tell the React compiler that the next bit of code is javascript
-- We utilize the `.map` method on the `cities` data which will in turn give us access to each city object.
+- We're going to display a list of countries inside of a `ul`
+- We use the `{}` notation to tell the React compiler that the next bit of code is JavaScript
+- We utilize the `.map` method on the `countries` data which will in turn give us access to each country object.
 - We then utilize the `()` syntax to return multiple jsx elements without having to use the `return` keyword.
-- Finally, the capitol and country are provided to each `li` element with heading tags.
+- Finally, the capitol and country name are provided to each `li` element with heading tags.
 
 At this point, we can check our browsers and open the console, you'll see the following warning/error:
 
@@ -202,8 +203,8 @@ A few rules for keys:
 
 - Keys must be unique, (this is how react keeps track of order)
 - Keys are attached to the parent containing element inside of the `.map`, in our example `li`.
-- We can use an `index` as a key, however this is discouraged due to indeces being unstable, (they can change). When working with real data, we'll typically have a unique id for each item.
-- You can use any unique reference as a key. In our cities example, each capitol is unique so we can use those as well.
+- We can use an `index` as a key, however this is discouraged due to indexes being unstable (they can change). When working with real data, we'll typically have a unique id for each item.
+- You can use any unique reference as a key. In our countries example, each capitol is unique so we can use those as well.
 
 #### Implementing Keys
 
@@ -211,10 +212,10 @@ To implement this `key` prop, we can simply attach it to the containing parent, 
 
 ```jsx
 {
-  cities.map((city) => (
-    <li key={city.capitol}>
-      <h3>Country: {city.country}</h3>
-      <h5>Capitol: {city.capitol}</h5>
+  countries.map((country) => (
+    <li key={country.capitol}>
+      <h3>Country: {country.name}</h3>
+      <h5>Capitol: {country.capitol}</h5>
     </li>
   ))
 }
@@ -226,48 +227,48 @@ If you refresh your browser, you'll notice the warning has now disappeared and w
 
 During the previous section, we learned how we can map through some data and return some `jsx`. In this section, we'll adapt the `.map` to return a component instead.
 
-In your `components` folder, create a new component called `CityItem`. This component will accept `props` as an argument.
+In your `components` folder, create a new component called `CountryItem`. This component will accept `props` as an argument.
 
 **Don't forget to export your component!**
 
-Add the following `jsx` to your `CityItem`:
+Add the following `jsx` to your `CountryItem`:
 
 ```jsx
 return (
-  <li className="city-item">
-    <h3>Country: {props.country}</h3>
+  <li className="country-item">
+    <h3>Country: {props.name}</h3>
     <h5>Capitol: {props.capitol}</h5>
   </li>
 )
 ```
 
-Next import your `CityItem` into `App.js`:
+Next import your `CountryItem` into `App.js`:
 
 ```js
-import CityItem from './components/CityItem'
+import CountryItem from './components/CountryItem'
 ```
 
-Our next step is to utilize `.map` to return a `CityItem` instead of our `li`. Comment out the current `.map`:
+Our next step is to utilize `.map` to return a `CountryItem` instead of our `li`. Comment out the current `.map`:
 
 ```jsx
 {
-  /* {cities.map((city) => (
-            <li key={city.capitol}>
-              <h3>Country: {city.country}</h3>
-              <h5>Capitol: {city.capitol}</h5>
+  /* {countries.map((country) => (
+            <li key={country.capitol}>
+              <h3>Country: {country.name}</h3>
+              <h5>Capitol: {country.capitol}</h5>
             </li>
           ))} */
 }
 ```
 
-**Hint: You can highlight a block of code and use <kbd>cmd</kbd> + <kbd>/</kbd> if your're on a mac or <kbd>ctrl</kbd>+<kbd>/</kbd> if you're on linux/windows to comment out a section of code.**
+**Hint: You can use <kbd>cmd</kbd> + <kbd>/</kbd> if your're on a mac or <kbd>ctrl</kbd>+<kbd>/</kbd> if you're on linux/windows to comment out a section of code.**
 
 We'll add the following jsx below the commented out code:
 
 ```jsx
 {
-  cities.map((city) => (
-    <CityItem capitol={city.capitol} country={city.country} />
+  countries.map((country) => (
+    <CountryItem capitol={country.capitol} country={country.name} />
   ))
 }
 ```
@@ -276,17 +277,17 @@ We'll add the following jsx below the commented out code:
 
 ```jsx
 {
-  cities.map((city) => (
-    <CityItem
-      key={city.capitol}
-      capitol={city.capitol}
-      country={city.country}
+  countries.map((country) => (
+    <CountryItem
+      key={country.capitol}
+      capitol={country.capitol}
+      country={country.name}
     />
   ))
 }
 ```
 
-If you check your browser, you'll see that our cities are still displayed but, with some nicer styling!
+If you check your browser, you'll see that our countries are still displayed but with some nicer styling!
 
 ## Recap
 
